@@ -18,7 +18,17 @@ int[] build(int level, int[] bitmap, int[]counts, int[] remainders){
     
     return bitmap;
   }
-  
+int[] shift_left(int[] array){
+  int[] shifted = new int[array.length];
+  for(int i=0; i < array.length;i++){
+    if(i<array.length-1){
+      shifted[i] = array[i+1];
+    }
+    else{shifted[i] = array[0];}
+  }
+  return shifted;
+}
+
 int[] bjorklund(int num_steps, int num_pulses){
   int[] bitmap = new int[0];
   int[] counts = new int[0];
@@ -48,12 +58,10 @@ int[] bjorklund(int num_steps, int num_pulses){
       index = min(index, i);
     }
   }
-  int[] new_bitmap = bitmap;
-  for(int i=0; i<num_steps-index; i++){
-    new_bitmap[i] = bitmap[i+index];
+  for(int i=0; i<index;i++){
+    bitmap = shift_left(bitmap);
   }
-  for(int i=0; i< index; i++){
-    new_bitmap[i+num_steps-index] = bitmap[i];
-  }
-  return new_bitmap;
+
+  
+  return bitmap;
 }

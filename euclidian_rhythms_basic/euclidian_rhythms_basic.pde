@@ -1,5 +1,5 @@
 
 void setup() {
-  int[] pat = bjorklund(8, 5); // n, k
+  int[] pat = bjorklund(16, 7); // n, k
   println(pat);
 }
